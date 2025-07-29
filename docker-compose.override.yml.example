@@ -1,0 +1,23 @@
+# Arquivo de exemplo para override do docker-compose
+# Copie para docker-compose.override.yml para personalizar
+
+version: '3.8'
+
+services:
+  web:
+    # Descomente para desenvolvimento (hot reload)
+    # volumes:
+    #   - ./src:/var/www/html
+    environment:
+      - CI_ENV=development
+    
+  db:
+    # Descomente para persistir dados em desenvolvimento
+    # volumes:
+    #   - ./data/mysql:/var/lib/mysql
+    ports:
+      - "3307:3306"  # Altere a porta se necessário
+    
+  phpmyadmin:
+    ports:
+      - "8082:80"  # Altere a porta se necessário
